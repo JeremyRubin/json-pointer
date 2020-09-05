@@ -1,5 +1,5 @@
 [package]
-authors = ["Nathaniel Ringo <remexre@gmail.com>"]
+authors = ["Julia DeMille <me@jdemille.com>", "Nathaniel Ringo <remexre@gmail.com>"]
 description = "A crate for parsing and using JSON pointers, as specified in RFC 6901."
 documentation = "https://docs.rs/json-pointer"
 homepage = "https://github.com/remexre/json-pointer"
