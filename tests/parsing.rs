@@ -26,12 +26,12 @@ fn faithful_parse(s: String) -> TestResult {
     let ok = match s.parse::<JsonPointer<_, _>>() {
         Ok(ptr) => if s.chars().next() == Some('#') {
             if URI_FRAGMENT_REGEX.is_match(&s) {
-                (s == ptr.uri_fragment())
+                s == ptr.uri_fragment()
             } else {
                 return TestResult::discard();
             }
         } else {
-            (s == ptr.to_string())
+            s == ptr.to_string()
         },
         Err(_) => return TestResult::discard(),
     };
@@ -49,7 +49,7 @@ fn parses_all_valid(s: String) -> bool {
     let matches_regex = JSON_POINTER_REGEX.is_match(&s) || URI_FRAGMENT_REGEX.is_match(&s);
     let parses = s.parse::<JsonPointer<_, _>>().is_ok();
 
-    (matches_regex == parses)
+    matches_regex == parses
 }
 
 }

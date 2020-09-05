@@ -1,4 +1,4 @@
-use parser::ParseError;
+use crate::parser::ParseError;
 
 /// An iterator that unescapes URI fragments.
 pub struct UnescapeIter<I: Iterator<Item=char>> {

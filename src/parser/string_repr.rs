@@ -1,7 +1,7 @@
 //! A parser for JSON pointers.
 
-use JsonPointer;
-use parser::ParseError;
+use crate::JsonPointer;
+use crate::parser::ParseError;
 
 /// A single token encountered when parsing a JSON pointer.
 #[derive(Clone, Copy, Debug, Eq, Ord, PartialEq, PartialOrd)]
