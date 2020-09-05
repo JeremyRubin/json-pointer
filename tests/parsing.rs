@@ -1,20 +1,15 @@
-extern crate json_pointer;
-#[macro_use]
-extern crate lazy_static;
-#[macro_use]
-extern crate quickcheck;
-extern crate regex;
-
 #[macro_use]
 mod macros;
 
 use json_pointer::JsonPointer;
-use quickcheck::TestResult;
+use lazy_static::lazy_static;
+use quickcheck::{quickcheck, TestResult};
 use regex::Regex;
 
 lazy_static! {
     static ref JSON_POINTER_REGEX: Regex = Regex::new("^(/([^/~]|~[01])*)*$").unwrap();
-    static ref URI_FRAGMENT_REGEX: Regex = Regex::new("^#(/([^A-Za-z0-9._!$&'()*+,;=@/?-]|~[01]|%[0-9a-fA-F]{2})*)*$").unwrap();
+    static ref URI_FRAGMENT_REGEX: Regex =
+        Regex::new("^#(/([^A-Za-z0-9._!$&'()*+,;=@/?-]|~[01]|%[0-9a-fA-F]{2})*)*$").unwrap();
 }
 
 quickcheck! {

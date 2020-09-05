@@ -1,11 +1,6 @@
-extern crate json_pointer;
-#[macro_use]
-extern crate lazy_static;
-#[macro_use]
-extern crate serde_json;
-
 use json_pointer::JsonPointer;
-use serde_json::Value;
+use lazy_static::lazy_static;
+use serde_json::{json, Value};
 
 lazy_static! {
     static ref JSON: Value = json!({

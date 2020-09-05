@@ -1,3 +1,4 @@
+#[allow(unused_macros)]
 macro_rules! assert_unparse {
     ($expr:expr) => {
         let ptr = $expr.parse::<JsonPointer<_, _>>().unwrap();

@@ -79,8 +79,6 @@
 
 #![deny(missing_docs)]
 
-extern crate serde_json;
-
 mod parser;
 mod ptr;
 
