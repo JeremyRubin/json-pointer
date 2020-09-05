@@ -5,7 +5,7 @@ A crate for parsing and using JSON pointers, as specified in [RFC
 built into `serde_json`, this handles both validating JSON Pointers before
 use and the URI Fragment Identifier Representation.
 
-[![Build Status](https://travis-ci.org/remexre/json-pointer.svg?branch=master)](https://travis-ci.org/remexre/json-pointer)
+[![pipeline status](https://gitlab.com/jmap-rs/json-pointer/badges/master/pipeline.svg)](https://gitlab.com/jmap-rs/json-pointer/-/commits/master)
 [![crates.io](https://img.shields.io/crates/v/json-pointer.svg)](https://crates.io/crates/json-pointer)
 [![Documentation](https://docs.rs/json-pointer/badge.svg)](https://docs.rs/json-pointer)
 

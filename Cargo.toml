@@ -2,12 +2,12 @@
 authors = ["Julia DeMille <me@jdemille.com>", "Nathaniel Ringo <remexre@gmail.com>"]
 description = "A crate for parsing and using JSON pointers, as specified in RFC 6901."
 documentation = "https://docs.rs/json-pointer"
-homepage = "https://github.com/remexre/json-pointer"
+homepage = "https://gitlab.com/jmap-rs/json-pointer"
 license = "MIT"
 name = "json-pointer"
 readme = "README.md"
-repository = "https://github.com/remexre/json-pointer"
-version = "0.3.3"
+repository = "https://github.com/jmap-rs/json-pointer"
+version = "0.3.4"
 edition = "2018"
 
 [badges]
