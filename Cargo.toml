@@ -1,13 +1,13 @@
 [package]
-authors = ["Julia DeMille <me@jdemille.com>", "Nathaniel Ringo <remexre@gmail.com>"]
+authors = ["Jeremy Rubin <jeremy.l.rubin@gmail.com>", "Julia DeMille <me@jdemille.com>", "Nathaniel Ringo <remexre@gmail.com>"]
 description = "A crate for parsing and using JSON pointers, as specified in RFC 6901."
 documentation = "https://docs.rs/json-pointer"
-homepage = "https://gitlab.com/jmap-rs/json-pointer"
+homepage = "https://github.com/JeremyRubin/json-pointer"
 license = "MIT"
-name = "json-pointer"
+name = "json-ptr"
 readme = "README.md"
-repository = "https://github.com/jmap-rs/json-pointer"
-version = "0.3.4"
+repository = "https://github.com/JeremyRubin/json-pointer"
+version = "0.3.3"
 edition = "2018"
 
 [badges]
