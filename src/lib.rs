@@ -12,7 +12,7 @@
 //! JSON pointers can be created with a literal `[&str]`, or parsed from a `String`.
 //! 
 //! ```rust
-//! extern crate json_pointer;
+//! extern crate json_ptr as json_pointer;
 //!
 //! use json_pointer::JsonPointer;
 //!
@@ -33,7 +33,7 @@
 //! and mutable references to the appropriate value, respectively.
 //! 
 //! ```rust
-//! extern crate json_pointer;
+//! extern crate json_ptr as json_pointer;
 //! #[macro_use]
 //! extern crate serde_json;
 //!
@@ -65,7 +65,7 @@
 //! crate does not support parsing full URIs.
 //! 
 //! ```rust
-//! extern crate json_pointer;
+//! extern crate json_ptr as json_pointer;
 //!
 //! use json_pointer::JsonPointer;
 //!
@@ -78,6 +78,8 @@
 //! ```
 
 #![deny(missing_docs)]
+
+extern crate serde_json;
 
 mod parser;
 mod ptr;

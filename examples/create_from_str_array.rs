@@ -1,4 +1,4 @@
-extern crate json_pointer;
+extern crate json_ptr as json_pointer;
 #[macro_use]
 extern crate serde_json;
 

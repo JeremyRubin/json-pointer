@@ -1,3 +1,15 @@
+#[macro_use]
+mod macros;
+#[macro_use]
+pub extern crate lazy_static;
+#[macro_use]
+pub extern crate quickcheck;
+#[macro_use]
+pub extern crate regex;
+#[macro_use]
+pub extern crate serde_json;
+#[macro_use]
+pub extern crate json_ptr as json_pointer;
 use json_pointer::JsonPointer;
 use lazy_static::lazy_static;
 use serde_json::{json, Value};

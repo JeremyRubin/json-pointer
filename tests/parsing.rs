@@ -1,5 +1,13 @@
 #[macro_use]
-mod macros;
+pub extern crate lazy_static;
+#[macro_use]
+pub extern crate quickcheck;
+#[macro_use]
+pub extern crate regex;
+#[macro_use]
+pub extern crate serde_json;
+#[macro_use]
+pub extern crate json_ptr as json_pointer;
 
 use json_pointer::JsonPointer;
 use lazy_static::lazy_static;
@@ -49,8 +57,3 @@ fn parses_all_valid(s: String) -> bool {
 
 }
 
-/// Checks for known past failures, to prevent regressions.
-#[test]
-fn regressions() {
-    assert_unparse!(uri "#/per%25/%25cent");
-}

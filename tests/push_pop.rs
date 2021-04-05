@@ -1,3 +1,15 @@
+#[macro_use]
+pub extern crate lazy_static;
+#[macro_use]
+pub extern crate quickcheck;
+#[macro_use]
+pub extern crate regex;
+#[macro_use]
+pub extern crate serde_json;
+#[macro_use]
+pub extern crate json_ptr as json_pointer;
+#[macro_use]
+mod macros;
 use json_pointer::JsonPointer;
 use quickcheck::{TestResult, quickcheck};
 

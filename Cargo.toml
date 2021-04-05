@@ -8,7 +8,6 @@ name = "json-ptr"
 readme = "README.md"
 repository = "https://github.com/JeremyRubin/json-pointer"
 version = "0.3.4"
-edition = "2018"
 
 [badges]
 gitlab = { repository = "jmap-rs/json-pointer" }
