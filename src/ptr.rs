@@ -49,9 +49,10 @@ impl<S: AsRef<str>, C: AsRef<[S]>> JsonPointer<S, C> {
     }
 
     /// Attempts to get a mutable reference to a value from the given JSON
-    /// value, returning an error if it can't be found.
-    pub fn get_mut<'json>(&self, val: &'json mut Value) -> Result<&'json mut Value, IndexError> {
-        self.ref_toks.as_ref().iter().fold(Ok(val), |val, tok| val.and_then(|val| {
+    /// value by traversing the value using the tokens provided, returning
+    /// an error if it can't be found.
+    fn get_mut_toks<'json, 'path, I>(&'path self, val: &'json mut Value, toks: I) -> Result<&'json mut Value, IndexError> where I: Iterator<Item = &'path S> {
+        toks.fold(Ok(val), |val, tok| val.and_then(|val| {
             let tok = tok.as_ref();
             match *val {
                 Value::Object(ref mut obj) => obj.get_mut(tok).ok_or_else(|| IndexError::NoSuchKey(tok.to_owned())),
@@ -68,6 +69,46 @@ impl<S: AsRef<str>, C: AsRef<[S]>> JsonPointer<S, C> {
                 _ => Err(IndexError::NotIndexable),
             }
         }))
+    }
+
+    /// Attempts to get a mutable reference to a value from the given JSON
+    /// value, returning an error if it can't be found.
+    pub fn get_mut<'json>(&self, val: &'json mut Value) -> Result<&'json mut Value, IndexError> {
+        self.get_mut_toks(val, self.ref_toks.as_ref().iter())
+    }
+
+    /// Attempts to delete the value at the given path, returning the removed value
+    pub fn delete<'json>(&self, val: &'json mut Value) -> Result<Value, IndexError> {
+        match self.ref_toks.as_ref().split_last() {
+            Some((last, head)) => {
+                let last = last.as_ref();
+                let parent = self.get_mut_toks(val, head.iter())?;
+                match *parent {
+                    Value::Array(ref mut arr) => {
+                        let idx = if last == "-" {
+                            return Err(IndexError::OutOfBounds(arr.len()))
+                        } else if let Ok(idx) = last.parse() {
+                            idx
+                        } else {
+                            return Err(IndexError::NoSuchKey(last.to_owned()));
+                        };
+
+                        // Can't delete past the array's end
+                        if idx >= arr.len() {
+                            return Err(IndexError::OutOfBounds(idx));
+                        }
+
+                        Ok(arr.remove(idx))
+                    },
+                    Value::Object(ref mut obj) => {
+                        obj.remove(last).ok_or_else(|| IndexError::NoSuchKey(last.to_owned()))
+                    }
+                    _ => Err(IndexError::NotIndexable),
+                }
+            }
+            // this means the path was empty (root) and we cannot delete root
+            None => Err(IndexError::NotIndexable)
+        }
     }
 
     /// Attempts to get an owned value from the given JSON value, returning an
